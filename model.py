@@ -54,7 +54,7 @@ def building_chain(docs):
     )
 
     llm = HuggingFaceEndpoint(
-        repo_id = "HuggingFaceH4/zephyr-7b-beta",
+        repo_id = "microsoft/Phi-3-mini-128k-instruct",
         task = "text-generation",
         huggingfacehub_api_token=os.environ["HUGGINGFACEHUB_API_TOKEN"]
     )
