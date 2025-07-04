@@ -11,7 +11,7 @@ import streamlit as st
 import tempfile
 import os
 
-os.environ["HUGGINGFACEHUB_API_KEY"] = "your_api_key"
+os.environ["HUGGINGFACEHUB_API_KEY"] = "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"
 
 def load_docs(file_path):
     documents = []
