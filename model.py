@@ -11,7 +11,7 @@ import streamlit as st
 import tempfile
 import os
 
-os.environ["HUGGINGFACEHUB_API_KEY"] = "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"
+os.environ["HUGGINGFACEHUB_API_KEY"] = "your_api_key_here"
 
 def load_docs(file_path):
     documents = []
@@ -58,7 +58,7 @@ def building_chain(docs):
         task = "text-generation"
     )
 
-    model = ChatHuggingFace(llm=llm)
+    # model = ChatHuggingFace(llm=llm)
 
     parser = StrOutputParser()
 
@@ -80,7 +80,7 @@ def building_chain(docs):
         "question": RunnablePassthrough()
     })
 
-    final_chain = RunnableSequence(parallel_chain | prompt | model | parser)
+    final_chain = RunnableSequence(parallel_chain | prompt | llm | parser)
     return final_chain
 
 st.set_page_config(page_title="PDF QNA", layout="centered")
