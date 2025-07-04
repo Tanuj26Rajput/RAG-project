@@ -54,11 +54,11 @@ def building_chain(docs):
     )
 
     llm = HuggingFaceEndpoint(
-        repo_id = "nvidia/Llama-3.1-Nemotron-70B-Instruct-HF",
+        repo_id = "HuggingFaceH4/zephyr-7b-beta",
         task = "text-generation"
     )
 
-    # model = ChatHuggingFace(llm=llm)
+    model = ChatHuggingFace(llm=llm)
 
     parser = StrOutputParser()
 
@@ -80,7 +80,7 @@ def building_chain(docs):
         "question": RunnablePassthrough()
     })
 
-    final_chain = RunnableSequence(parallel_chain | prompt | llm | parser)
+    final_chain = RunnableSequence(parallel_chain | prompt | model | parser)
     return final_chain
 
 st.set_page_config(page_title="PDF QNA", layout="centered")
