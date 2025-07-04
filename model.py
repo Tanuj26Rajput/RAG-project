@@ -58,8 +58,6 @@ def building_chain(docs):
         task = "text-generation"
     )
 
-    model = ChatHuggingFace(llm=llm)
-
     parser = StrOutputParser()
 
     prompt = PromptTemplate(
@@ -80,7 +78,7 @@ def building_chain(docs):
         "question": RunnablePassthrough()
     })
 
-    final_chain = RunnableSequence(parallel_chain | prompt | model | parser)
+    final_chain = RunnableSequence(parallel_chain | prompt | llm | parser)
     return final_chain
 
 st.set_page_config(page_title="PDF QNA", layout="centered")
